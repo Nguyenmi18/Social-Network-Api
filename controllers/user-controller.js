@@ -1,5 +1,4 @@
 const { User } = require("../models");
-const { populate } = require("../models/user");
 
 const userController = {
   // get all pizzas
@@ -47,6 +46,9 @@ const userController = {
       .catch((err) => res.json(err));
   },
 
+  //remove user goes here
+
+
   // add new friend to user's friendlist
   addNewFriend({ params, body }, res) {
     console.log(params);
@@ -72,7 +74,7 @@ const userController = {
   },
 
   //remove a friend from a user's friend list
-  removeUser({ params }, res) {
+  removeFriend({ params }, res) {
     User.findOneAndDelete({ _id: params.UserId })
       .then((deletedUser) => {
         if (!deletedUser) {
